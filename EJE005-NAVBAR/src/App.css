@@ -1,0 +1,16 @@
+:root { --blue: #2d5b9e; --selected: #e8eef8; --border: #d8d8d8; }
+
+.app-shell { min-height: 100vh; display: flex; background: #f5f5f5; }
+.sidebar { width: 230px; flex: 0 0 230px; min-height: 100vh; padding: 20px 0; background: #fff; border-right: 1px solid var(--border); }
+.brand { display: flex; align-items: center; gap: 8px; padding: 0 18px 24px; font-size: 19px; }.brand-mark { width: 27px; height: 27px; display: grid; place-items: center; color: #fff; background: var(--blue); border-radius: 3px; }.close-sidebar { display: none; }
+.nav-caption { margin: 0 18px 8px; color: #777; font-size: 10px; }.menu-tree, .submenu { list-style: none; padding: 0; margin: 0; }.menu-row { min-height: 38px; display: flex; align-items: center; padding-right: 12px; color: #444; }.menu-row.is-selected { color: var(--blue); background: var(--selected); }.menu-link { flex: 1; display: flex; align-items: center; gap: 9px; padding: 9px 0; border: 0; color: inherit; background: transparent; text-align: left; cursor: pointer; }.menu-icon { width: 18px; text-align: center; }.menu-label { font-size: 13px; }.expand-button { width: 22px; border: 0; color: #777; background: transparent; cursor: pointer; }
+.main-content { min-width: 0; flex: 1; }.topbar { height: 58px; padding: 0 28px; display: flex; align-items: center; background: #fff; border-bottom: 1px solid var(--border); color: #333; font-size: 14px; }.mobile-menu-button { display: none; margin-right: 12px; padding: 2px 6px; border: 1px solid var(--border); background: #fff; cursor: pointer; }.page-content { max-width: 850px; margin: 0 auto; padding: 45px 30px; }.content-page { padding: 24px; background: #fff; border: 1px solid var(--border); }.content-page h1 { margin: 0 0 12px; font-size: 24px; font-weight: 500; }.content-page p { margin: 0; color: #666; font-size: 14px; }.tree-info { margin: 18px 0; color: #777; font-size: 12px; }
+.sidebar-backdrop { display: none; }
+
+@media (max-width: 700px) {
+  .sidebar { position: fixed; inset: 0 auto 0 0; z-index: 10; transform: translateX(-100%); transition: transform .2s; box-shadow: 2px 0 8px #0002; }
+  .app-shell:has(.sidebar-backdrop) .sidebar { transform: translateX(0); }
+  .close-sidebar { display: block; margin-left: auto; border: 0; color: #555; background: transparent; font-size: 22px; cursor: pointer; }
+  .sidebar-backdrop { position: fixed; inset: 0; z-index: 5; display: block; border: 0; background: #0005; }
+  .topbar { padding: 0 16px; }.mobile-menu-button { display: block; }.page-content { padding: 25px 16px; }
+}
